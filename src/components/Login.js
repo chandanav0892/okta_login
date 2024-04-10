@@ -1,53 +1,3 @@
-// import React, { useState } from 'react';
-// import { useOktaAuth } from '@okta/okta-react';
-// import { useNavigate } from 'react-router-dom';
-
-// const Login = () => {
-//   const { oktaAuth } = useOktaAuth();
-//   const [username, setUsername] = useState('');
-//   const [password, setPassword] = useState('');
-//   const navigate = useNavigate(); // Import useNavigate from react-router-dom
-
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-//     try {
-//       await oktaAuth.signIn({ username, password });
-//       // Navigate to protected route after successful login
-//       navigate('/protected');
-//     } catch (error) {
-//       console.error('Sign in failed:', error);
-//     }
-//   };
-
-//   return (
-//     <div>
-//       <h2>Login</h2>
-//       <form onSubmit={handleSubmit}>
-//         <label>
-//           Username:
-//           <input
-//             type="text"
-//             value={username}
-//             onChange={(e) => setUsername(e.target.value)}
-//           />
-//         </label>
-//         <label>
-//           Password:
-//           <input
-//             type="password"
-//             value={password}
-//             onChange={(e) => setPassword(e.target.value)}
-//           />
-//         </label>
-//         <button type="submit">Login</button>
-//       </form>
-//     </div>
-//   );
-// };
-
-// export default Login;
-
-
 import React, { useState } from 'react';
 import { useOktaAuth } from '@okta/okta-react';
 import { useNavigate } from 'react-router-dom';
@@ -62,6 +12,7 @@ const Login = () => {
     e.preventDefault();
     try {
       await oktaAuth.signIn({ username, password });
+      console.log("oktaAuth",oktaAuth);
       navigate('/protected');
     } catch (error) {
       console.error('Sign in failed:', error);

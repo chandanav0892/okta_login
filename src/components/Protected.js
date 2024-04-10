@@ -5,16 +5,18 @@ import { useNavigate } from 'react-router-dom';
 const Protected = () => {
   const { oktaAuth, authState } = useOktaAuth();
   const [authenticated, setAuthenticated] = useState(false);
-  const navigate = useNavigate(); // Import useNavigate from react-router-dom
+  const navigate = useNavigate();
 
   useEffect(() => {
-    if (authState.isAuthenticated !== null) {
-      setAuthenticated(authState.isAuthenticated);
+    if (authState !== null && authState.isAuthenticated !== null) {
+      setAuthenticated(true);
     } else {
-      navigate('/');
+      // Redirect to login page if authState is not available or isAuthenticated is null
+      navigate('/login');
     }
-  }, [authState.isAuthenticated]);
+  }, [authState, navigate]);
 
+  console.log("authState",authState)
   const handleLogout = async () => {
     await oktaAuth.signOut();
   };
